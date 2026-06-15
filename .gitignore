@@ -1,0 +1,5 @@
+.env
+audit_log.csv
+__pycache__/
+*.pyc
+.DS_Store
