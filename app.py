@@ -203,16 +203,20 @@ QUESTION SUMMARY
 OUTCOME
 
 APPLICABLE RULE
+Include exact article/rule number. If not found, write: Not found.
 
 SOURCE
+Include document name and page number if available.
 
 QUOTE
+Include a short exact quote from the retrieved rulebook text. If no quote supports the answer, write: No supporting quote found.
 
 PRACTICAL INTERPRETATION
 
 MISSING FACTS
 
 CONFIDENCE
+High only if an exact rule/article and quote are found. Medium if relevant rule text is found but interpretation is needed. Low if facts are missing or source support is weak.
 
 STEWARD ACTION
 """
@@ -225,9 +229,11 @@ STEWARD ACTION
             tools=[
                 {
                     "type": "file_search",
-                    "vector_store_ids": [CORE_VECTOR_STORE_ID] + ([st.session_state.event_vector_store_id] if st.session_state.event_vector_store_id else [])
+                    "vector_store_ids": [CORE_VECTOR_STORE_ID] + ([st.session_state.event_vector_store_id] if st.session_state.event_vector_store_id else []),
+                    "max_num_results": 8
                 }
-            ]
+            ],
+            include=["file_search_call.results"]
         )
 
     answer_text = response.output_text
