@@ -23,6 +23,10 @@ st.set_page_config(
 
 st.title("Horse Jumping Rulebook Assistant")
 
+st.info(
+    "📱 Mobile users: tap the arrow in the top-left corner to access settings, event workspaces, and document uploads."
+)
+
 event_name = st.sidebar.text_input("Event name", placeholder="Example: CSI Woodside July 2026")
 
 if st.button("Create new event workspace"):
